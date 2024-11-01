@@ -1,3 +1,34 @@
+# Distributed Optuna
+# https://pypi.org/project/optuna-distributed/
+# https://github.com/xadrianzetx/optuna-distributed
+
+<!-- Step-by-Step Agent Commands to Start Self-Building the API and Infrastructure
+Step 1: Upload Container to Cloud Storage
+Create bucket/verify existence on S3/GCloud.
+Upload container image from local directory.
+Confirm access permissions for API to pull images.
+Step 2: Build API Endpoints to Manage Job Creation and Infrastructure Initialization
+POST /start-job: Accepts container image URL and initiates infrastructure setup.
+GET /job-status: Returns current job status and node status.
+DELETE /stop-job: Stops the infrastructure and clears resources.
+Step 3: Initiate Swarm/Kubernetes Cluster with Image from Storage
+Spin up manager/master node: Pull container image from storage.
+Initialize worker nodes: Set to dynamically pull and join Swarm/Kubernetes based on cluster size.
+Network setup and load balancing.
+Step 4: Distribute and Manage Optuna Job
+Launch Optuna job on master node, with Redis to coordinate.
+Distribute trials across nodes, managing with Optuna's trial and result retrieval. -->
+
+# https://docs.rapids.ai/deployment/stable/examples/rapids-optuna-hpo/notebook/
+
+The RAPIDS framework provides a suite of libraries to execute end-to-end data science pipelines entirely on GPUs. One of the libraries in this framework is cuML, which implements common machine learning models with a scikit-learn-compatible API and a GPU-accelerated backend. You can learn more about RAPIDS here.
+
+# https://github.com/rapidsai/cuml
+
+# You can deploy a db for optuna to coordinate the work
+# You can then deploy this on a cluster of machines to run the same script
+https://www.kaggle.com/code/anubhavchhabra/scaling-your-hyperparameter-search-using-optuna
+
 # Ditto
 
 [![License](https://img.shields.io/github/license/yoheinakajima/ditto)](LICENSE)
@@ -128,3 +159,5 @@ This is a quick exploration, so I have no plans to work on this further. Contrib
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
