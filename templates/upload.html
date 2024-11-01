@@ -6,24 +6,19 @@
     <title>Upload File</title>
 </head>
 <body>
-    <h1>Upload a Text File</h1>
-    <form method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept=".txt" required>
-        <button type="submit" name="upload">Display File</button>
+    <h1>Upload a File</h1>
+    <form action="{{ url_for('upload_bp.upload_file') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".txt,.png,.jpg">
+        <button type="submit">Display File</button>
     </form>
 
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul class=flashes>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
+    {% if file_content %}
+        <h2>File Content:</h2>
+        {% if file_type == 'text' %}
+            <pre>{{ file_content }}</pre>
+        {% elif file_type == 'image' %}
+            <img src="{{ file_content }}" alt="Uploaded Image" style="max-width: 100%;">
+        {% endif %}
     {% endif %}
-    {% endwith %}
-
-    <div id="file-content">
-        <pre>{{ file_content }}</pre>
-    </div>
 </body>
 </html>

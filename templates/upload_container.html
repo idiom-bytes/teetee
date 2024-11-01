@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Docker Container</title>
+</head>
+<body>
+    <h1>Upload Docker Container to GCR</h1>
+    
+    <form action="{{ url_for('upload_container_bp.upload_container') }}" method="post">
+        <div>
+            <label for="container">Select Docker Container:</label>
+            <select name="container" id="container" required>
+                {% for container in containers %}
+                <option value="{{ container.tags[0] if container.tags else container.id }}">
+                    {{ container.tags[0] if container.tags else container.short_id }} - Created: {{ container.attrs.Created[:19] }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div style="margin-top: 20px;">
+            <label for="project_id">GCP Project ID:</label>
+            <input type="text" name="project_id" id="project_id" required>
+        </div>
+        <div style="margin-top: 20px;">
+            <label for="registry_name">Registry Name:</label>
+            <input type="text" name="registry_name" id="registry_name" required>
+        </div>
+        <button type="submit" style="margin-top: 20px;">Upload to GCR</button>
+    </form>
+
+    {% if error %}
+        <div style="color: red; margin-top: 20px;">
+            Error: {{ error }}
+        </div>
+    {% endif %}
+
+    {% if success %}
+        <div style="color: green; margin-top: 20px;">
+            Success: {{ success }}
+        </div>
+    {% endif %}
+</body>
+</html>

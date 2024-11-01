@@ -83,6 +83,7 @@ def load_routes():
             if filename.endswith('.py') and filename != '__init__.py':
                 module_name = filename[:-3]
                 module_path = f'routes.{module_name}'
+                print(f"Regitering route: {module_path}")
                 try:
                     if module_path in sys.modules:
                         importlib.reload(sys.modules[module_path])
