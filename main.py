@@ -3,7 +3,7 @@ import sys
 import json
 import importlib
 import traceback
-from flask import Flask, Blueprint, request, send_from_directory, render_template_string, jsonify
+from flask import Flask, Blueprint, request, send_from_directory, render_template_string, render_template, jsonify, flash, redirect, url_for
 from threading import Thread
 from time import sleep
 
@@ -12,7 +12,7 @@ from litellm import litellm, completion, supports_function_calling
 
 litellm.set_verbose = True
 litellm.set_debug = True
-litellm.api_key = os.environ.get('OPEN_API_KEY')
+litellm.api_key = os.environ.get('OPENAI_API_KEY')
 
 # Configuration
 MODEL_NAME = os.environ.get('LITELLM_MODEL', 'gpt-4o')  # Default model; can be swapped easily
