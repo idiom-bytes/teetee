@@ -10,6 +10,10 @@ from time import sleep
 # Correctly import the completion function from LiteLLM
 from litellm import completion, supports_function_calling
 
+litellm.set_verbose = True
+litellm.set_debug = True
+litellm.api_key = os.environ.get('OPEN_API_KEY')
+
 # Configuration
 MODEL_NAME = os.environ.get('LITELLM_MODEL', 'gpt-4o')  # Default model; can be swapped easily
 
