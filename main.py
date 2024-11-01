@@ -8,7 +8,7 @@ from threading import Thread
 from time import sleep
 
 # Correctly import the completion function from LiteLLM
-from litellm import completion, supports_function_calling
+from litellm import litellm, completion, supports_function_calling
 
 litellm.set_verbose = True
 litellm.set_debug = True
